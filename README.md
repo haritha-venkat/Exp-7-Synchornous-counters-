@@ -53,36 +53,66 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: haritha shree.v
+RegisterNumber:  212222230046
 */
+## UP COUNTER
+```python
+module sync(clk,t);
+input clk;
+output reg [0:2]t;
+always@ (posedge clk)
+begin
+t[2]=((t[1]&t[0])^t[2]);
+t[1]=t[0]^t[1];
+t[0]=1^t[0];
+end
+endmodule
+```
+## DOWN COUNTER:
+```python
+module sync(clk,t);
+input clk;
+output reg [0:2]t;
+wire bar2,bar1,bar0;
+not(bar2,t[2]);
+not(bar1,t[1]);
+not(bar0,t[0]);
+always@ (posedge clk)
+begin
+t[2]=((bar1&bar0)^t[2]);
+t[1]=bar0^t[1];
+t[0]=1^t[0];
+end
+endmodule
+```
 
 
 
+## RTL LOGIC UP COUNTER AND DOWN COUNTER  
+## UP COUNTER
+![Screenshot 2023-06-09 194714](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/274e98db-9910-4923-8805-66de6efb59f2)
+
+## DOWN COUNTER:
+![Screenshot 2023-06-09 194754](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/52052f7d-fa4f-4035-bcc0-4a5e765f2a3d)
+
+## TIMING DIGRAMS FOR COUNTER  
+
+## UP COUNTER:
+![Screenshot 2023-06-09 194837](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/46bfaba2-1bed-4a4b-b20a-c58ce88e13a3)
+
+## DOWN COUNTER:
+![Screenshot 2023-06-09 194908](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/623392c7-cc38-40e8-b3fc-37acd17980a2)
+
+## TRUTH TABLE 
+
+## UP COUNTER:
+![Screenshot 2023-06-09 194955](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/f38b3977-7706-45cb-a26b-bacb124fa963)
+## DOWN COUNTER:
+![Screenshot 2023-06-09 195032](https://github.com/haritha-venkat/Exp-7-Synchornous-counters-/assets/121285701/1a3b30e8-dfd0-4d58-8151-bb83b46d9763)
 
 
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
-
-
+## RESULTS:
+Thus, 4 bit up and down counters are implemented and its functionality is validated successfully.
 
 
-
-
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
